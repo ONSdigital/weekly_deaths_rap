@@ -5,16 +5,28 @@ devtools::load_all("weekly.deaths")
 source("config.R")
 
 # Data import ------------------------------------------------------------------
-mock_data_filename <- "inputs/weekly_deaths_mock_data.xlsx"
-mock_data_sheets <- readxl::excel_sheets(mock_data_filename)
-mock_data_list <- lapply(mock_data_sheets, function(x)
-  readxl::read_excel(mock_data_filename, sheet = x)
-)
-names(mock_data_list) <- mock_data_sheets
 
-# Put dataframes in global environment
-list2env(mock_data_list, envir = .GlobalEnv)
-imd <- list(england = imd_england, wales = imd_wales)
+ew_deaths <- import_ew(cfg)
+
+ew_final <- import_ew_final(cfg)
+
+ni_deaths <- import_ni(cfg)
+
+scot_deaths <- import_scot(cfg)
+
+exp_deaths_sql <- import_excess_death_data_sql(cfg)
+
+nspl <- import_nspl(cfg)
+
+imd <- list(
+  england = import_imd(cfg, "england"),
+  wales = import_imd(cfg, "wales")
+)
+
+esp <- import_esp(cfg)
+
+weekly_deaths_pops <- import_weekly_interpol_pops(cfg)
+
 # Data validation --------------------------------------------------------------
 
 validation_report <- validate_data(ew_deaths)
