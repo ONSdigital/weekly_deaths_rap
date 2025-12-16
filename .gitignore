@@ -1,5 +1,6 @@
 .Rhistory
-outputs/
+outputs/*
+!outputs/.gitkeep
 .Rproj.user
 README.html
 *.csv
