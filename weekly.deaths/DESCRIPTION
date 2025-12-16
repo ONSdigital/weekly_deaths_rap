@@ -1,0 +1,34 @@
+Package: weekly.deaths
+Title: Processes and Calculate Weekly Deaths Counts and Rates for Weekly
+    Publication
+Version: 0.0.0.9000
+Authors@R:
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Processes weekly data from England and Wales, Scotland and Northern
+    Ireland to calculate counts and rates of deaths of various breakdowns. This
+    is an accredited official statistic which is publised weekly.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports:
+    dplyr,
+    tidyr,
+    rapid.spreadsheets,
+    stringr,
+    rlang,
+    ISOweek,
+    lubridate,
+    janitor,
+    kableExtra,
+    openxlsx,
+    rmarkdown,
+    PHEindicatormethods
+Config/testthat/edition: 3
+Depends:
+    R (>= 2.10)
+Suggests:
+    testthat (>= 3.0.0),
+    halefunctionlib

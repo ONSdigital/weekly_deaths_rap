@@ -1,0 +1,11 @@
+Worksheet name	Worksheet description
+Cover_sheet	"Information on the ONS, mortality statistics and weekly deaths"
+Contents	Table of contents
+Notes	Notes used in this publication
+Table_1	"Weekly provisional death registrations by sex, age group, Index of Multiple Deprivation (IMD) and place of occurrence, England and Wales"
+Table_2	"Weekly provisional death occurrences by sex, age group, Index of Multiple Deprivation (IMD) and place of occurrence, registered 2024 and 2025, England and Wales"
+Table_3	"Weekly provisional death registrations for selected causes of death by country and region, England and Wales"
+Table_4	"Weekly provisional figures on registration delays by death certification type and place of occurrence, for deaths registered that week, England and Wales"
+Table_5	"Weekly provisional death registrations and excess deaths by sex and age group, United Kingdom - Official Statistics in Development"
+Table_6	"Weekly provisional death registrations by country, sex and age group, United Kingdom"
+Table_7	"Weekly provisional annualised age-standardised mortality rates by country and sex, United Kingdom"

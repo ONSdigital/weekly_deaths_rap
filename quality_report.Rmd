@@ -1,0 +1,114 @@
+---
+title: "Weekly Deaths Quality Report"
+output: html_document
+date: "`r time_stamp`"
+---
+
+## Run log details
+
+User: **``r Sys.getenv('USERNAME')``**  
+Run date time: **``r time_stamp``**  
+File run: **``r rstudioapi::getSourceEditorContext()$path``**  
+<br>
+Output file is week **``r cfg$week``** **``r cfg$year``**, for publication 
+**``r cfg$publication_date``**  
+The registration week end date is 
+**``r format(as.Date(derive_max_reg_date(cfg), "%Y%m%d"),"%d %B %Y")``**  
+The minimum date for this year is
+**``r as.Date(as.character(min(ew_deaths_single_year$dor)), format = "%Y%m%d")``**        
+The maximum date for this year is
+**``r as.Date(as.character(max(ew_deaths_single_year$dor)), format = "%Y%m%d")``**
+<br>
+<br>
+Provisional data used: **``r cfg$provisional_years``**
+<br>
+Finalised data used: **``r cfg$finalised_years``**
+<br>
+<br>
+England and Wales data: **``r paste0(cfg$ew_file_used)``**  
+England and Wales finalised data: 
+**``r paste0(cfg$ew_file_used_final_reporting)``**  
+Scotland data: **``r paste0(cfg$db_scot_ni, cfg$tbl_scot)``**  
+Northern Ireland data: **``r paste0(cfg$db_scot_ni, cfg$tbl_ni)``**
+
+
+`r if(cfg$scope == "EW"){
+"<mark style='background-color: yellow'>The latest week's data has only been 
+included for England and Wales.
+<br>Tables 5 and 6 contain the previous week's data for UK, Scotland and 
+Northern Ireland</mark>"
+}`
+
+
+### Aggregating subgroup counts
+The subtotal checks are carried out for the relevant groupings.\
+E.g. the age checks are carried out for breakdowns by area, sex, place.
+```{r echo = FALSE, results='asis'}
+
+
+create_subtotals_table(ew_registrations, ew_occurrences,
+                       ew_registrations_by_cause, ew_reg_delays_cert_pod_area,
+                       uk_excess_deaths, uk_registrations, cfg$week, cfg$scope)
+```
+
+### Number of rows in each table
+This table shows whether the number of rows in each table is as expected.
+```{r echo = FALSE, results='asis'}
+create_lengths_table(
+  ew_registrations, ew_occurrences, ew_registrations_by_cause,
+  ew_reg_delays_cert_pod_area, uk_excess_deaths, uk_registrations,
+  uk_asmr, cfg$week, cfg$scope, cfg$previous_year)
+```
+<br />
+
+### Deaths "involving" vs "due to"
+The checks are made for the relevant groupings in the table.
+```{r, echo = FALSE}
+create_due_involve_table(ew_registrations_by_cause)
+create_due_involve_rows_table(ew_registrations_by_cause)
+```
+<br />
+
+### Checks on ASMR
+The checks are made for all weeks
+```{r, echo = FALSE}
+create_asmr_check_table(uk_asmr)
+display_asmr_warning_text(uk_asmr)
+create_asmr_out_lims_table(uk_asmr)
+create_asmr_uk_out_table(uk_asmr)
+create_asmr_all_ppl_out_table(uk_asmr)
+```
+<br />
+
+## Check Outputs Match Across Tables
+### Table 1
+This will be used as the means to verify the other tables.
+
+### Table 2
+The only occurrences table, so there is nothing to compare against.
+
+### Table 3
+```{r echo = FALSE, results='asis'}
+qa_table_3_counts(ew_registrations, ew_registrations_by_cause)
+```
+
+### Table 4
+>NOTE: No regional breakdown in Table, just total deaths for all of England, Wales and non-residents
+
+```{r echo = FALSE, results='asis'}
+qa_table_4_counts(ew_registrations, ew_reg_delays_cert_pod_area)
+```
+
+### Table 5
+> NOTE: Table 1 has different age group intervals so was changed to match Table 5's format.
+
+```{r echo = FALSE, results='asis'}
+qa_table_5_counts(ew_registrations, uk_excess_deaths)
+```
+
+### Table 6
+>NOTE: Table 1 has different age group intervals so was changed to match Table 6's format.
+
+```{r echo = FALSE, results='asis'}
+qa_table_6_counts(ew_registrations, uk_registrations)
+```

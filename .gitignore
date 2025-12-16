@@ -1,0 +1,7 @@
+.Rhistory
+outputs/
+.Rproj.user
+README.html
+*.csv
+*.xlsx
+!inputs/weekly_deaths_mock_data.xlsx
