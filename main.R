@@ -1,7 +1,6 @@
 # Load packages, import config -------------------------------------------------
 
-# library(weekly.deaths)
-devtools::load_all("weekly.deaths")
+library(weekly.deaths)
 source("config.R")
 
 # Data import ------------------------------------------------------------------
