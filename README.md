@@ -51,6 +51,8 @@ Deaths figures are based on registrations, occurrences and expected deaths (from
 
 You need to have `devtools` package installed. Clone this GitLab repository and run `devtools::install("weekly.deaths")` to install the package in R. Please note that your working directory needs to be set as the project directory, e.g.: `setwd("location_on_your_PC/weekly-deaths-rap")`.
 
+
+
 ### Installing other packages
 
 The [rapid.spreadsheets](https://github.com/RAPID-ONS/rapid.spreadsheets) package is required. You can install the package directly from GitHub using ```devtools::install_github("RAPID-ONS/rapid.spreadsheets", dependencies = TRUE, build_vignettes = TRUE)``` or download the package from the [GitHub repository](https://github.com/RAPID-ONS/rapid.spreadsheets) using **<> Code** then **Download ZIP**, before installing using:
@@ -98,6 +100,14 @@ Text for the cover sheet, contents page and notes is stored in .txt files inside
 
 ### Provisional and Final data
 Finalised data should be used when it is available. Most of the tables in the dataset will only be for the latest year, and so will contain provisional data. Table 2 (Occurrences) and the data for the evergreen page/dashboard also contain data from previous years. Whether data for a year is finalised or provisional is set in the config using **provisional_years** and **finalised_years**, both of which should contain at least one year. Check with Population Life Events before changing to finalised data.
+
+
+### Additional Quality Assurance
+Internally we inspect the output data from the pipeline using R Shiny dashboard as a part of quality assurance process before it is published. To share something similar externally we created a [prototype data explorer tool (experimental)](https://onsdigital.github.io/weekly_deaths_data_explorer/) that allows users to explore the latest weekly deaths data. It includes some of the charts we use internally, and further development will depend on user needs.
+
+
+
+
 
 ## Contribution guidance
 To contribute to this pipeline please get in touch with the project owner(s).
