@@ -23,6 +23,7 @@ Weekly publication of death registration and occurrence data for the latest avai
 
 - [Latest dataset](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales)
 -  [Evergreen page/Dashboard](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/deathsregisteredweeklyinenglandandwales/2025-03-26/)
+- [Prototype data explorer](https://github.com/ONSdigital/weekly_deaths_rap)
 
 ## Project description
 
